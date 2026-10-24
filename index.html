@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Учебный интернет-магазин одежды и обуви: популярные товары, преимущества и форма заказа.">
+  <title>Учебный интернет-магазин</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/main.js"></script>
+</head>
+<body id="top" class="d-flex flex-column min-vh-100">
+
+  <!-- Плашка над шапкой: Bootstrap alert, закрывается крестиком -->
+  <div class="alert alert-dismissible top-bar rounded-0 border-0 mb-0" role="alert">
+    <span>Бесплатная доставка при заказе от 5 000 руб. Промокод: <strong>KR1AUTUMN</strong></span>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Закрыть уведомление"></button>
+  </div>
+
+  <!-- Шапка: navbar разворачивается в строку с lg, ниже lg сворачивается в бургер -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-0" aria-label="Основная навигация">
+      <div class="container py-3">
+        <a class="navbar-brand" href="index.html">ShopProject</a>
+
+        <div class="d-flex align-items-center gap-2 ms-auto ms-lg-0 order-lg-last">
+          <button class="theme-toggle" type="button" aria-label="Переключить тему оформления" aria-pressed="false" title="Тема: светлая или тёмная">
+            <span class="theme-toggle__icon" aria-hidden="true"></span>
+          </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse me-lg-3" id="mainNav">
+          <ul class="navbar-nav ms-auto gap-lg-3 py-2 py-lg-0">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#popular">Популярное</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#advantages">Преимущества</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-grow-1">
+
+    <!-- Hero: фон-фото на весь экран с оверлеем, контент по центру -->
+    <section class="hero">
+      <div class="container d-flex flex-column align-items-center">
+        <h1 class="hero__title">Концепт интернет-магазина</h1>
+        <p class="hero__text">
+          Капсульная коллекция базового гардероба. Премиальные натуральные ткани,
+          архитектурный крой и внимание к деталям для тех, кто ценит форму,
+          комфорт и вневременной стиль.
+        </p>
+        <a class="btn btn-outline-primary" href="#popular">Перейти к товарам &darr;</a>
+      </div>
+    </section>
+
+    <!-- Популярное: 1 колонка на телефоне, 3 в ряд с md (768px) -->
+    <section class="screen" id="popular">
+      <div class="container d-flex flex-column flex-grow-1 justify-content-center">
+        <h2 class="section-title">Популярное</h2>
+        <div class="row g-4">
+
+          <div class="col-12 col-md-4">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=jeans"><img class="product-card__image object-fit-cover" src="images/products/jeans.jpg" alt="Джинсы" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Джинсы</h3>
+              <p class="text-body-secondary m-0">Классические джинсы прямого кроя.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 4 990 руб.</p>
+              <button class="btn btn-primary align-self-start mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Джинсы">Заказать</button>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <article class="card product-card product-card--discount h-100 p-3 gap-2">
+              <span class="badge badge-sale position-absolute top-0 start-0 m-3 z-1">Скидка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=jacket"><img class="product-card__image object-fit-cover" src="images/products/jacket.jpg" alt="Куртка" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Куртка</h3>
+              <p class="text-body-secondary m-0">Демисезонная куртка из плотной ткани.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 8 990 руб.</p>
+              <button class="btn btn-primary align-self-start mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Куртка">Заказать</button>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=hoodie"><img class="product-card__image object-fit-cover" src="images/products/hoodie.jpg" alt="Толстовка" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Толстовка</h3>
+              <p class="text-body-secondary m-0">Тёплая толстовка с капюшоном.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 3 990 руб.</p>
+              <button class="btn btn-primary align-self-start mt-auto" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Толстовка">Заказать</button>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Преимущества: Bootstrap tabs. Вкладки слева, панель справа на любой ширине;
+         ниже md (768px) у вкладок остаются только номера -->
+    <section class="screen" id="advantages">
+      <div class="container d-flex flex-column flex-grow-1 justify-content-center">
+        <h2 class="section-title">Преимущества магазина</h2>
+        <div class="d-flex flex-column flex-grow-1 border bg-body-secondary p-3 p-md-4">
+          <div class="row g-3 g-md-4 flex-grow-1">
+
+            <div class="col-auto col-md-5">
+              <div class="nav flex-column flex-nowrap gap-2 h-100" role="tablist" aria-orientation="vertical">
+                <button class="nav-link advantage-tab active" id="adv-1-tab" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#adv-1" aria-controls="adv-1" aria-selected="true">
+                  <span class="advantage-tab__num">01</span>
+                  <span class="advantage-tab__title d-none d-md-inline">Итальянский деним и хлопок</span>
+                </button>
+                <button class="nav-link advantage-tab" id="adv-2-tab" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#adv-2" aria-controls="adv-2" aria-selected="false">
+                  <span class="advantage-tab__num">02</span>
+                  <span class="advantage-tab__title d-none d-md-inline">Архитектурный крой и посадка</span>
+                </button>
+                <button class="nav-link advantage-tab" id="adv-3-tab" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#adv-3" aria-controls="adv-3" aria-selected="false">
+                  <span class="advantage-tab__num">03</span>
+                  <span class="advantage-tab__title d-none d-md-inline">Армированные швы и фурнитура</span>
+                </button>
+                <button class="nav-link advantage-tab" id="adv-4-tab" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#adv-4" aria-controls="adv-4" aria-selected="false">
+                  <span class="advantage-tab__num">04</span>
+                  <span class="advantage-tab__title d-none d-md-inline">Натуральная шерсть и футер</span>
+                </button>
+                <button class="nav-link advantage-tab" id="adv-5-tab" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#adv-5" aria-controls="adv-5" aria-selected="false">
+                  <span class="advantage-tab__num">05</span>
+                  <span class="advantage-tab__title d-none d-md-inline">Анатомическая колодка и кожа</span>
+                </button>
+                <button class="nav-link advantage-tab" id="adv-6-tab" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#adv-6" aria-controls="adv-6" aria-selected="false">
+                  <span class="advantage-tab__num">06</span>
+                  <span class="advantage-tab__title d-none d-md-inline">Базовый гардероб на каждый день</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="col col-md-7">
+              <div class="tab-content advantage-panels h-100 border bg-body overflow-hidden">
+
+                <div class="tab-pane active" id="adv-1" role="tabpanel" aria-labelledby="adv-1-tab" tabindex="0">
+                  <img class="advantage-panels__image" src="images/products/jeans.jpg" alt="Итальянский деним" loading="lazy">
+                  <div class="d-flex flex-column flex-grow-1 gap-1 p-4">
+                    <h3 class="advantage-panels__heading">Премиальные ткани</h3>
+                    <p class="m-0 text-body-secondary">Плотный хлопковый деним без синтетических примесей, сохраняющий форму годами и дышащий в любую погоду.</p>
+                  </div>
+                </div>
+
+                <div class="tab-pane" id="adv-2" role="tabpanel" aria-labelledby="adv-2-tab" tabindex="0">
+                  <img class="advantage-panels__image" src="images/products/coat.jpg" alt="Архитектурный крой" loading="lazy">
+                  <div class="d-flex flex-column flex-grow-1 gap-1 p-4">
+                    <h3 class="advantage-panels__heading">Анатомические лекала</h3>
+                    <p class="m-0 text-body-secondary">Выверенные линии силуэта обеспечивают свободу движений и безупречную посадку на любой тип фигуры.</p>
+                  </div>
+                </div>
+
+                <div class="tab-pane" id="adv-3" role="tabpanel" aria-labelledby="adv-3-tab" tabindex="0">
+                  <img class="advantage-panels__image" src="images/products/jacket.jpg" alt="Армированные швы" loading="lazy">
+                  <div class="d-flex flex-column flex-grow-1 gap-1 p-4">
+                    <h3 class="advantage-panels__heading">Контроль прочности</h3>
+                    <p class="m-0 text-body-secondary">Двойная строчка армированными нитями, влагостойкая пропитка верха и металлическая фурнитура высшего класса.</p>
+                  </div>
+                </div>
+
+                <div class="tab-pane" id="adv-4" role="tabpanel" aria-labelledby="adv-4-tab" tabindex="0">
+                  <img class="advantage-panels__image" src="images/products/sweater.jpg" alt="Натуральная шерсть" loading="lazy">
+                  <div class="d-flex flex-column flex-grow-1 gap-1 p-4">
+                    <h3 class="advantage-panels__heading">Тактильный комфорт</h3>
+                    <p class="m-0 text-body-secondary">Мягчайший начес футера 3-нитки и натуральная шерсть тонкого прядения без эффекта колкости.</p>
+                  </div>
+                </div>
+
+                <div class="tab-pane" id="adv-5" role="tabpanel" aria-labelledby="adv-5-tab" tabindex="0">
+                  <img class="advantage-panels__image" src="images/products/chelsea-boots.jpg" alt="Анатомическая колодка" loading="lazy">
+                  <div class="d-flex flex-column flex-grow-1 gap-1 p-4">
+                    <h3 class="advantage-panels__heading">Эргономичная обувь</h3>
+                    <p class="m-0 text-body-secondary">Натуральная гидрофобная кожа, амортизирующая подошва и колодка, разработанная для долгих прогулок.</p>
+                  </div>
+                </div>
+
+                <div class="tab-pane" id="adv-6" role="tabpanel" aria-labelledby="adv-6-tab" tabindex="0">
+                  <img class="advantage-panels__image" src="images/products/chinos.jpg" alt="Базовый гардероб" loading="lazy">
+                  <div class="d-flex flex-column flex-grow-1 gap-1 p-4">
+                    <h3 class="advantage-panels__heading">Сочетаемость вещей</h3>
+                    <p class="m-0 text-body-secondary">Нейтральные цвета и простые силуэты: любую вещь коллекции можно собрать с другой без долгих раздумий.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="container my-4">
+      <div class="about border bg-body-secondary">
+        <h2 class="about__title">О магазине</h2>
+        <p class="about__text text-body-secondary">
+          Капсульная коллекция базовой одежды и обуви: джинсы, куртки, толстовки и ботинки на каждый день.
+          Бесплатная доставка при заказе от 5 000 руб.
+        </p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer bg-body-secondary border-top py-4">
+    <div class="container d-flex flex-wrap justify-content-between align-items-start gap-4">
+      <div>
+        <p class="small text-body-secondary mb-1">&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p class="small text-body-secondary mb-1">Изображения: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+      </div>
+      <nav aria-label="Навигация в подвале">
+        <ul class="list-unstyled d-flex gap-3 m-0">
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Быстрый заказ: Bootstrap modal, открывается кнопками «Заказать» -->
+  <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-2">
+        <div class="modal-header border-0 pb-0">
+          <h2 class="modal-title" id="orderModalTitle">Быстрый заказ</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-body-secondary">Мы свяжемся с вами для уточнения деталей и адреса доставки.</p>
+
+          <form id="orderForm" action="#" method="post" novalidate>
+            <input id="selected-product" name="selected-product" type="hidden">
+
+            <div class="mb-3">
+              <label class="form-label" for="order-name">Имя</label>
+              <input class="form-control" id="order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="order-phone">Телефон</label>
+              <input class="form-control" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+              <small class="form-text">Формат: +7 (900) 000-00-00</small>
+            </div>
+
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" id="order-agreement" name="agreement" type="checkbox" role="switch" required>
+              <label class="form-check-label" for="order-agreement">Я согласен на обработку данных</label>
+            </div>
+
+            <button class="btn btn-primary mt-2" type="submit">Заказать</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-success success-message position-fixed bottom-0 start-50 translate-middle-x mb-3" id="successMessage" role="alert" hidden>
+    Заказ отправлен! Мы скоро свяжемся с вами.
+  </div>
+
+  <a class="to-top" href="#top" aria-label="Наверх">&uarr;</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

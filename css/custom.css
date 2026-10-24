@@ -1,0 +1,624 @@
+/* ===============================
+   Правки поверх Bootstrap 5.3.3.
+   Задача: сайт выглядит как в КР1 (палитра, строгая геометрия, шрифты).
+   Сетка, navbar, формы, модальное окно, вкладки, таблицы и accordion берутся из Bootstrap.
+   =============================== */
+
+/* ---------- 1. Палитра КР1: светлая тема ---------- */
+
+:root,
+[data-bs-theme="light"] {
+  --bs-body-font-family: 'Inter', Arial, sans-serif;
+  --bs-body-bg: #f9f8f6;
+  --bs-body-bg-rgb: 249, 248, 246;
+  --bs-body-color: #2a2a2a;
+  --bs-body-color-rgb: 42, 42, 42;
+  --bs-secondary-color: #666666;
+  --bs-secondary: #666666;
+  --bs-secondary-rgb: 102, 102, 102;
+  --bs-secondary-bg: #f1ede6;
+  --bs-secondary-bg-rgb: 241, 237, 230;
+  --bs-tertiary-bg: #fbf5f5;
+  --bs-tertiary-bg-rgb: 251, 245, 245;
+  --bs-border-color: #e2ded8;
+  --bs-primary: #8b1e2d;
+  --bs-primary-rgb: 139, 30, 45;
+  --bs-link-color: #8b1e2d;
+  --bs-link-color-rgb: 139, 30, 45;
+  --bs-link-hover-color: #6e1320;
+  --bs-link-hover-color-rgb: 110, 19, 32;
+  --bs-danger: #b00020;
+  --bs-danger-rgb: 176, 0, 32;
+  --bs-form-invalid-border-color: #b00020;
+
+  /* Строгая геометрия КР1: никаких скруглений */
+  --bs-border-radius: 0;
+  --bs-border-radius-sm: 0;
+  --bs-border-radius-lg: 0;
+  --bs-border-radius-xl: 0;
+  --bs-border-radius-xxl: 0;
+  --bs-border-radius-2xl: 0;
+  --bs-border-radius-pill: 0;
+
+  /* Свои токены (в Bootstrap таких нет) */
+  --shop-primary-dark: #6e1320;
+  --shop-on-primary: #ffffff;
+  --shop-accent: #8a6a1f;
+  --shop-overlay: rgba(32, 12, 16, 0.55);
+  --shop-success: #168a2f;
+  --shop-success-bg: #eefaf0;
+  --shop-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shop-shadow-md: 0 10px 24px rgba(0, 0, 0, 0.08);
+  --shop-header-height: 73px;
+  --shop-topbar-height: 37px;
+}
+
+/* ---------- 2. Тёмная тема КР1 (атрибут data-bs-theme ставит js/main.js) ---------- */
+
+[data-bs-theme="dark"] {
+  --bs-body-bg: #151211;
+  --bs-body-bg-rgb: 21, 18, 17;
+  --bs-body-color: #ece7e1;
+  --bs-body-color-rgb: 236, 231, 225;
+  --bs-secondary-color: #a8a09a;
+  --bs-secondary: #a8a09a;
+  --bs-secondary-rgb: 168, 160, 154;
+  --bs-secondary-bg: #1f1b1a;
+  --bs-secondary-bg-rgb: 31, 27, 26;
+  --bs-tertiary-bg: #2a1f21;
+  --bs-tertiary-bg-rgb: 42, 31, 33;
+  --bs-border-color: #3b3532;
+  --bs-primary: #d4606c;
+  --bs-primary-rgb: 212, 96, 108;
+  --bs-link-color: #d4606c;
+  --bs-link-color-rgb: 212, 96, 108;
+  --bs-link-hover-color: #e07a85;
+  --bs-link-hover-color-rgb: 224, 122, 133;
+  --bs-danger: #ff7a8a;
+  --bs-danger-rgb: 255, 122, 138;
+  --bs-form-invalid-border-color: #ff7a8a;
+
+  --shop-primary-dark: #e07a85;
+  --shop-on-primary: #151211;
+  --shop-accent: #d3a94a;
+  --shop-success: #4cc26b;
+  --shop-success-bg: #12261a;
+  --shop-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shop-shadow-md: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- 3. Базовые стили ---------- */
+
+html {
+  scroll-behavior: smooth;
+  /* На 2px меньше высоты шапки: при дробном масштабе экрана (125-150%) иначе
+     под шапкой остаётся полоска предыдущей секции */
+  scroll-padding-top: calc(var(--shop-header-height) - 2px);
+}
+
+body {
+  --top-offset: 0px;
+}
+
+/* Плашка над шапкой есть: hero занимает остаток экрана */
+body:has(.top-bar) {
+  --top-offset: var(--shop-topbar-height);
+}
+
+/* Ширина и поля контейнера как в КР1 (1100px, поля 24px) */
+.container {
+  --bs-gutter-x: 3rem;
+  max-width: 1100px;
+}
+
+/* Заголовки КР1: Montserrat, жирные, размеры браузера по умолчанию */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  line-height: inherit;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.17em; }
+
+.section-title {
+  margin: 0 0 0.83em;
+  letter-spacing: 1px;
+}
+
+/* ---------- 4. Кнопки, формы ---------- */
+
+.btn {
+  --bs-btn-padding-x: 1rem;
+  --bs-btn-padding-y: 0.5rem;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.btn-primary {
+  --bs-btn-color: var(--shop-on-primary);
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-color: var(--shop-on-primary);
+  --bs-btn-hover-bg: var(--shop-primary-dark);
+  --bs-btn-hover-border-color: var(--shop-primary-dark);
+  --bs-btn-active-color: var(--shop-on-primary);
+  --bs-btn-active-bg: var(--shop-primary-dark);
+  --bs-btn-active-border-color: var(--shop-primary-dark);
+}
+
+/* Вторая кнопка КР1: рамка и текст бордовые, фон как у страницы */
+.btn-outline-primary {
+  --bs-btn-color: var(--bs-primary);
+  --bs-btn-bg: var(--bs-body-bg);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-color: var(--shop-primary-dark);
+  --bs-btn-hover-bg: var(--bs-body-bg);
+  --bs-btn-hover-border-color: var(--shop-primary-dark);
+  --bs-btn-active-color: var(--shop-primary-dark);
+  --bs-btn-active-bg: var(--bs-body-bg);
+  --bs-btn-active-border-color: var(--shop-primary-dark);
+}
+
+.form-control,
+.form-select {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.form-control:hover,
+.form-select:hover {
+  border-color: var(--bs-primary);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--bs-primary);
+  box-shadow: none;
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 3px;
+}
+
+/* Ошибка валидации как в КР1: только красная рамка, без значка */
+.form-control.is-invalid,
+.form-select.is-invalid {
+  background-image: none;
+  padding-right: 0.75rem;
+}
+
+.form-check-input:checked {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.form-check-input:focus {
+  border-color: var(--bs-primary);
+  box-shadow: none;
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 3px;
+}
+
+/* Переключатель КР1: квадратный бегунок 44x24 */
+.form-switch .form-check-input {
+  width: 44px;
+  height: 24px;
+  margin-left: 0;
+  background-color: var(--bs-border-color);
+  border: 0;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3crect x='3' y='3' width='18' height='18' fill='%23fff'/%3e%3c/svg%3e");
+  background-position: left center;
+  background-size: contain;
+}
+
+.form-switch .form-check-input:checked {
+  background-color: var(--bs-primary);
+  background-position: right center;
+}
+
+.form-switch {
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---------- 5. Плашка над шапкой (Bootstrap alert) ---------- */
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--shop-topbar-height);
+  padding: 0.25rem 3rem;
+  background-color: var(--shop-primary-dark);
+  color: var(--shop-on-primary);
+  font-size: 14px;
+  text-align: center;
+}
+
+.top-bar .btn-close {
+  padding: 0 0.5rem;
+  height: 100%;
+}
+
+/* В тёмной теме плашка светлая, значок закрытия тёмный */
+[data-bs-theme="dark"] .top-bar .btn-close {
+  filter: none;
+}
+
+/* ---------- 6. Шапка и навигация ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--bs-secondary-bg);
+  border-bottom: 1px solid var(--bs-border-color);
+  box-shadow: var(--shop-shadow-sm);
+}
+
+.site-header .navbar {
+  --bs-navbar-nav-link-padding-x: 1rem;
+  min-height: calc(var(--shop-header-height) - 1px);
+}
+
+.navbar-brand {
+  padding: 0;
+  margin-right: 1rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bs-body-color);
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: var(--bs-body-color);
+}
+
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem;
+  color: var(--bs-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--shop-on-primary);
+  background-color: var(--bs-primary);
+}
+
+/* Бургер квадратный 40x40, как кнопка темы */
+.navbar-toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-color: var(--bs-border-color);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 3px;
+}
+
+[data-bs-theme="dark"] .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* Кнопка темы: ☾ переключает в тёмную, ☀ в светлую */
+.theme-toggle {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--bs-body-color);
+  background-color: transparent;
+  border: 1px solid var(--bs-border-color);
+  font-size: 18px;
+  line-height: 1;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--shop-on-primary);
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 3px;
+}
+
+.theme-toggle__icon::before {
+  content: "\263E";
+}
+
+.theme-toggle[aria-pressed="true"] .theme-toggle__icon::before {
+  content: "\2600";
+}
+
+/* ---------- 7. Hero и экраны главной ---------- */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--shop-header-height) - var(--top-offset));
+  min-height: calc(100svh - var(--shop-header-height) - var(--top-offset));
+  padding: 3rem 0;
+  text-align: center;
+  background-color: var(--bs-body-color);
+  background-image:
+    linear-gradient(var(--shop-overlay), var(--shop-overlay)),
+    url('../images/hero-bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero__title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 6vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+  color: #ffffff;
+}
+
+.hero__text {
+  max-width: 650px;
+  margin: 0 auto 1.5rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+/* Экран: секция ровно на видимую высоту под липкой шапкой */
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--shop-header-height));
+  min-height: calc(100svh - var(--shop-header-height));
+}
+
+/* Поля внутри экрана как в КР1: 32px сверху и снизу */
+.screen > .container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* ---------- 8. Карточки товаров ---------- */
+
+.product-card {
+  --bs-card-bg: var(--bs-body-bg);
+  --bs-card-border-color: var(--bs-border-color);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shop-shadow-md);
+  border-color: var(--bs-primary);
+}
+
+.product-card--discount {
+  --bs-card-border-color: var(--bs-primary);
+}
+
+.product-card--discount .product-card__price {
+  color: var(--bs-primary);
+}
+
+.product-card__image {
+  object-position: center 60%;
+}
+
+.product-card__title {
+  color: var(--bs-body-color);
+}
+
+.badge {
+  --bs-badge-padding-x: 0.5rem;
+  --bs-badge-padding-y: 0.25rem;
+  --bs-badge-font-size: 14px;
+  color: var(--shop-on-primary);
+}
+
+.badge-sale {
+  background-color: var(--bs-primary);
+}
+
+.badge-new {
+  background-color: var(--shop-accent);
+}
+
+/* ---------- 9. Преимущества: вкладки (Bootstrap tabs) ---------- */
+
+.advantage-tab {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  text-align: left;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-left: 3px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.advantage-tab:hover {
+  background-color: var(--bs-tertiary-bg);
+  border-left-color: var(--bs-secondary-color);
+}
+
+.advantage-tab.active {
+  background-color: var(--bs-tertiary-bg);
+  border-left-color: var(--bs-primary);
+}
+
+.advantage-tab:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 2px;
+}
+
+.advantage-tab__num {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--bs-secondary-color);
+}
+
+.advantage-tab__title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.advantage-tab.active .advantage-tab__num,
+.advantage-tab.active .advantage-tab__title {
+  color: var(--bs-primary);
+}
+
+/* Панель занимает всю высоту: картинка растягивается, текст внизу */
+.advantage-panels > .tab-pane.active {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Уже 768px: у вкладок только номера, всё остальное место занимает панель справа */
+@media (max-width: 767.98px) {
+  .advantage-tab {
+    justify-content: center;
+    min-width: 48px;
+    padding: 0.5rem;
+    border-left-width: 1px;
+    border-bottom: 3px solid transparent;
+  }
+
+  .advantage-tab:hover {
+    border-left-color: var(--bs-border-color);
+    border-bottom-color: var(--bs-secondary-color);
+  }
+
+  .advantage-tab.active {
+    border-left-color: var(--bs-border-color);
+    border-bottom-color: var(--bs-primary);
+  }
+}
+
+.advantage-panels__image {
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.advantage-panels__heading {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--bs-primary);
+}
+
+/* ---------- 10. Плашка «О магазине», подвал ---------- */
+
+.about {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.about__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about__text {
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.site-footer a {
+  color: var(--bs-secondary-color);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--bs-primary);
+  text-decoration: underline;
+}
+
+/* ---------- 11. Окно заказа (Bootstrap modal) и сообщение об отправке (alert) ---------- */
+
+.modal {
+  --bs-modal-width: 560px;
+}
+
+.success-message {
+  --bs-alert-color: var(--bs-body-color);
+  --bs-alert-bg: var(--shop-success-bg);
+  --bs-alert-border-color: transparent;
+  z-index: 1080;
+  border-left: 4px solid var(--shop-success);
+}
+
+/* ---------- 12. Кнопка «Наверх» ---------- */
+
+.to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--bs-primary);
+  border: 1px solid var(--shop-primary-dark);
+  color: var(--shop-on-primary);
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shop-shadow-md);
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Скрыта, пока не пролистан первый экран; без JS видна всегда */
+.js .to-top:not(.to-top--visible) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+
+.to-top:hover {
+  background-color: var(--shop-primary-dark);
+  color: var(--shop-on-primary);
+  transform: translateY(-2px);
+}
+
+.to-top:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 3px;
+}

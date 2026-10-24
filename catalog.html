@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Каталог товаров учебного интернет-магазина.">
+  <title>Каталог товаров - Учебный интернет-магазин</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/main.js"></script>
+</head>
+<body id="top" class="d-flex flex-column min-vh-100">
+
+  <!-- Шапка: navbar разворачивается в строку с lg, ниже lg сворачивается в бургер -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-0" aria-label="Основная навигация">
+      <div class="container py-3">
+        <a class="navbar-brand" href="index.html">ShopProject</a>
+
+        <div class="d-flex align-items-center gap-2 ms-auto ms-lg-0 order-lg-last">
+          <button class="theme-toggle" type="button" aria-label="Переключить тему оформления" aria-pressed="false" title="Тема: светлая или тёмная">
+            <span class="theme-toggle__icon" aria-hidden="true"></span>
+          </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse me-lg-3" id="mainNav">
+          <ul class="navbar-nav ms-auto gap-lg-3 py-2 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#popular">Популярное</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#advantages">Преимущества</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container flex-grow-1">
+    <nav aria-label="Хлебные крошки">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Каталог</li>
+      </ol>
+    </nav>
+
+    <section class="section">
+      <h1 class="section-title">Каталог товаров</h1>
+      <p>
+        Выберите категорию и диапазон цены в фильтре слева: товары отфильтруются сразу.
+        Если ничего не найдено, нажмите «Сбросить».
+      </p>
+    </section>
+
+    <aside class="about about--inline border bg-body-secondary d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+      <div>
+        <h2 class="about__title">Не уверены в размере?</h2>
+        <p class="about__text text-body-secondary m-0">Мерки и таблицы размеров одежды, обуви, шапок и перчаток собраны на отдельной странице.</p>
+      </div>
+      <a class="btn btn-outline-primary flex-shrink-0 align-self-md-center" href="size.html">Как выбрать размер</a>
+    </aside>
+
+    <!-- Фильтр без JS: правила :has() в custom.css прячут колонки .catalog-item -->
+    <section class="row g-4 section catalog-layout">
+      <div class="col-lg-auto">
+        <aside class="catalog-filters sticky-lg-top border bg-body-secondary p-3">
+          <h2>Фильтры</h2>
+
+          <form class="d-grid gap-3" action="#" method="get">
+            <fieldset class="border p-3">
+              <legend class="float-none w-auto fs-6 fw-bold mb-0 px-1">Категория</legend>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="category" id="category-all" value="all" checked>
+                <label class="form-check-label" for="category-all">Все товары</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="category" id="category-clothes" value="clothes">
+                <label class="form-check-label" for="category-clothes">Одежда</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="category" id="category-shoes" value="shoes">
+                <label class="form-check-label" for="category-shoes">Обувь</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="category" id="category-sale" value="sale">
+                <label class="form-check-label" for="category-sale">Скидки</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="category" id="category-new" value="new">
+                <label class="form-check-label" for="category-new">Новинки</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="border p-3">
+              <legend class="float-none w-auto fs-6 fw-bold mb-0 px-1">Цена</legend>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="price" id="price-any" value="any" checked>
+                <label class="form-check-label" for="price-any">Любая</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="price" id="price-low" value="low">
+                <label class="form-check-label" for="price-low">До 3 000 руб.</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="price" id="price-mid" value="mid">
+                <label class="form-check-label" for="price-mid">3 000 - 6 000 руб.</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="price" id="price-high" value="high">
+                <label class="form-check-label" for="price-high">От 6 000 руб.</label>
+              </div>
+            </fieldset>
+
+            <button class="btn btn-outline-primary" type="reset">Сбросить</button>
+          </form>
+        </aside>
+      </div>
+
+      <div class="col-lg">
+        <h2>Список товаров</h2>
+        <div class="row g-4">
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes" data-price="mid">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=jeans"><img class="product-card__image object-fit-cover" src="images/products/jeans.jpg" alt="Джинсы" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Джинсы</h3>
+              <p class="text-body-secondary m-0">Классические джинсы прямого кроя.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 4 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=jeans">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes sale" data-price="high">
+            <article class="card product-card product-card--discount h-100 p-3 gap-2">
+            <span class="badge badge-sale position-absolute top-0 start-0 m-3 z-1">Скидка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=jacket"><img class="product-card__image object-fit-cover" src="images/products/jacket.jpg" alt="Куртка" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Куртка</h3>
+              <p class="text-body-secondary m-0">Демисезонная куртка из плотной ткани.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 8 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=jacket">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes" data-price="mid">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=hoodie"><img class="product-card__image object-fit-cover" src="images/products/hoodie.jpg" alt="Толстовка" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Толстовка</h3>
+              <p class="text-body-secondary m-0">Тёплая толстовка с капюшоном.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 3 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=hoodie">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes" data-price="low">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=tshirt"><img class="product-card__image object-fit-cover" src="images/products/tshirt.jpg" alt="Футболка базовая" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Футболка базовая</h3>
+              <p class="text-body-secondary m-0">Хлопковая футболка свободного кроя.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 1 490 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=tshirt">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes" data-price="low">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=plaid-shirt"><img class="product-card__image object-fit-cover" src="images/products/plaid-shirt.jpg" alt="Рубашка в клетку" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Рубашка в клетку</h3>
+              <p class="text-body-secondary m-0">Рубашка из плотного хлопка с длинным рукавом.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 2 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=plaid-shirt">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes new" data-price="mid">
+            <article class="card product-card h-100 p-3 gap-2">
+            <span class="badge badge-new position-absolute top-0 start-0 m-3 z-1">Новинка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=sweater"><img class="product-card__image object-fit-cover" src="images/products/sweater.jpg" alt="Свитер вязаный" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Свитер вязаный</h3>
+              <p class="text-body-secondary m-0">Свитер из шерстяной пряжи, воротник под горло.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 4 490 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=sweater">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes" data-price="high">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=coat"><img class="product-card__image object-fit-cover" src="images/products/coat.jpg" alt="Пальто шерстяное" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Пальто шерстяное</h3>
+              <p class="text-body-secondary m-0">Классическое пальто прямого силуэта из шерсти.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 11 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=coat">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="shoes new" data-price="high">
+            <article class="card product-card h-100 p-3 gap-2">
+            <span class="badge badge-new position-absolute top-0 start-0 m-3 z-1">Новинка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=chelsea-boots"><img class="product-card__image object-fit-cover" src="images/products/chelsea-boots.jpg" alt="Ботинки челси" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Ботинки челси</h3>
+              <p class="text-body-secondary m-0">Кожаные ботинки на резинках с устойчивой подошвой.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 7 490 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=chelsea-boots">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="shoes" data-price="high">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=lace-boots"><img class="product-card__image object-fit-cover" src="images/products/lace-boots.jpg" alt="Ботинки на шнуровке" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Ботинки на шнуровке</h3>
+              <p class="text-body-secondary m-0">Высокие кожаные ботинки на протекторной подошве.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 8 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=lace-boots">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="shoes sale" data-price="mid">
+            <article class="card product-card product-card--discount h-100 p-3 gap-2">
+            <span class="badge badge-sale position-absolute top-0 start-0 m-3 z-1">Скидка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=rain-boots"><img class="product-card__image object-fit-cover" src="images/products/rain-boots.jpg" alt="Резиновые сапоги" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Резиновые сапоги</h3>
+              <p class="text-body-secondary m-0">Непромокаемые сапоги для дождливой осени.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 3 290 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=rain-boots">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes new" data-price="low">
+            <article class="card product-card h-100 p-3 gap-2">
+            <span class="badge badge-new position-absolute top-0 start-0 m-3 z-1">Новинка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=skirt"><img class="product-card__image object-fit-cover" src="images/products/skirt.jpg" alt="Юбка миди в клетку" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Юбка миди в клетку</h3>
+              <p class="text-body-secondary m-0">Расклешённая юбка миди в мелкую клетку.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 2 890 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=skirt">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes sale" data-price="mid">
+            <article class="card product-card product-card--discount h-100 p-3 gap-2">
+            <span class="badge badge-sale position-absolute top-0 start-0 m-3 z-1">Скидка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=dress"><img class="product-card__image object-fit-cover" src="images/products/dress.jpg" alt="Платье-рубашка в полоску" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Платье-рубашка в полоску</h3>
+              <p class="text-body-secondary m-0">Платье-рубашка из лёгкой ткани с поясом.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 3 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=dress">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes new" data-price="high">
+            <article class="card product-card h-100 p-3 gap-2">
+            <span class="badge badge-new position-absolute top-0 start-0 m-3 z-1">Новинка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=puffer"><img class="product-card__image object-fit-cover" src="images/products/puffer.jpg" alt="Пуховик" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Пуховик</h3>
+              <p class="text-body-secondary m-0">Глянцевый пуховик с капюшоном.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 12 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=puffer">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="clothes sale" data-price="low">
+            <article class="card product-card product-card--discount h-100 p-3 gap-2">
+            <span class="badge badge-sale position-absolute top-0 start-0 m-3 z-1">Скидка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=scarf"><img class="product-card__image object-fit-cover" src="images/products/scarf.jpg" alt="Шарф в полоску" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Шарф в полоску</h3>
+              <p class="text-body-secondary m-0">Шерстяной шарф с бахромой.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 1 290 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=scarf">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="shoes sale" data-price="low">
+            <article class="card product-card product-card--discount h-100 p-3 gap-2">
+            <span class="badge badge-sale position-absolute top-0 start-0 m-3 z-1">Скидка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=canvas-sneakers"><img class="product-card__image object-fit-cover" src="images/products/canvas-sneakers.jpg" alt="Кеды текстильные" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Кеды текстильные</h3>
+              <p class="text-body-secondary m-0">Низкие кеды из плотного хлопка.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 2 790 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=canvas-sneakers">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="shoes new" data-price="low">
+            <article class="card product-card h-100 p-3 gap-2">
+            <span class="badge badge-new position-absolute top-0 start-0 m-3 z-1">Новинка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=slides"><img class="product-card__image object-fit-cover" src="images/products/slides.jpg" alt="Шлёпанцы с декором" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Шлёпанцы с декором</h3>
+              <p class="text-body-secondary m-0">Лёгкие шлёпанцы с декоративными ремешками.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 1 490 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=slides">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="shoes" data-price="low">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=sandals"><img class="product-card__image object-fit-cover" src="images/products/sandals.jpg" alt="Сандалии на пробковой подошве" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Сандалии на пробковой подошве</h3>
+              <p class="text-body-secondary m-0">Кожаные сандалии с двумя ремешками.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 2 290 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=sandals">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="shoes" data-price="mid">
+            <article class="card product-card h-100 p-3 gap-2">
+              <a class="ratio ratio-1x1" href="product.html?id=loafers"><img class="product-card__image object-fit-cover" src="images/products/loafers.jpg" alt="Лоферы-мокасины кожаные" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Лоферы-мокасины кожаные</h3>
+              <p class="text-body-secondary m-0">Мягкие кожаные мокасины с металлической пряжкой.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 5 490 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=loafers">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="shoes new" data-price="mid">
+            <article class="card product-card h-100 p-3 gap-2">
+            <span class="badge badge-new position-absolute top-0 start-0 m-3 z-1">Новинка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=running"><img class="product-card__image object-fit-cover" src="images/products/running.jpg" alt="Кроссовки беговые" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Кроссовки беговые</h3>
+              <p class="text-body-secondary m-0">Лёгкие кроссовки для бега и тренировок.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 5 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=running">Подробнее</a>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4 catalog-item" data-category="shoes sale" data-price="high">
+            <article class="card product-card product-card--discount h-100 p-3 gap-2">
+            <span class="badge badge-sale position-absolute top-0 start-0 m-3 z-1">Скидка</span>
+              <a class="ratio ratio-1x1" href="product.html?id=winter-boots"><img class="product-card__image object-fit-cover" src="images/products/winter-boots.jpg" alt="Ботинки зимние" loading="lazy"></a>
+              <h3 class="product-card__title m-0">Ботинки зимние</h3>
+              <p class="text-body-secondary m-0">Утеплённые ботинки с меховой подкладкой.</p>
+              <p class="product-card__price fw-bold m-0">Цена: 9 990 руб.</p>
+              <a class="btn btn-primary align-self-start mt-auto" href="product.html?id=winter-boots">Подробнее</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer bg-body-secondary border-top py-4">
+    <div class="container d-flex flex-wrap justify-content-between align-items-start gap-4">
+      <div>
+        <p class="small text-body-secondary mb-1">&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p class="small text-body-secondary mb-1">Изображения: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+      </div>
+      <nav aria-label="Навигация в подвале">
+        <ul class="list-unstyled d-flex gap-3 m-0">
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#top" aria-label="Наверх">&uarr;</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

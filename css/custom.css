@@ -210,6 +210,7 @@ h3 { font-size: 1.17em; }
   margin-left: 0;
   background-color: var(--bs-border-color);
   border: 0;
+  border-radius: 0;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3crect x='3' y='3' width='18' height='18' fill='%23fff'/%3e%3c/svg%3e");
   background-position: left center;
   background-size: contain;
@@ -239,6 +240,10 @@ h3 { font-size: 1.17em; }
   color: var(--shop-on-primary);
   font-size: 14px;
   text-align: center;
+}
+
+.btn-close {
+  border-radius: 0;
 }
 
 .top-bar .btn-close {
@@ -423,7 +428,8 @@ h3 { font-size: 1.17em; }
   color: var(--bs-primary);
 }
 
-.product-card__image {
+.product-card__image,
+.product-image {
   object-position: center 60%;
 }
 
@@ -621,4 +627,208 @@ h3 { font-size: 1.17em; }
 .to-top:focus-visible {
   outline: 2px solid var(--bs-primary);
   outline-offset: 3px;
+}
+
+/* ---------- 13. Внутренние страницы: секции, крошки (breadcrumb) ---------- */
+
+.section {
+  margin-bottom: 2rem;
+}
+
+h1.section-title {
+  margin-bottom: 0.67em;
+}
+
+/* Цель якоря (size.html#size-top, contacts.html#faq): заголовок окрашивается как в КР1 */
+.section:target .section-title {
+  color: var(--bs-primary);
+}
+
+.breadcrumb {
+  --bs-breadcrumb-font-size: 14px;
+  --bs-breadcrumb-divider-color: var(--bs-secondary-color);
+  --bs-breadcrumb-item-active-color: var(--bs-secondary-color);
+  padding-top: 1.5rem;
+}
+
+.site-footer a.active {
+  color: var(--bs-primary);
+}
+
+/* ---------- 14. Каталог: фильтры и карточки ---------- */
+
+.catalog-filters {
+  top: calc(var(--shop-header-height) + 1rem);
+  z-index: auto;
+}
+
+/* Ширина панели фильтров как в КР1; ниже lg панель на всю ширину */
+@media (min-width: 992px) {
+  .catalog-filters {
+    width: 260px;
+  }
+}
+
+.catalog-layout h2 {
+  margin: 0.83em 0;
+}
+
+/* Плашка «Не уверены в размере?» */
+.about--inline {
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.about--inline .about__title {
+  margin-bottom: 0.25rem;
+}
+
+.about--inline .about__text {
+  max-width: none;
+}
+
+/* Фильтр без JS: отмеченный radio прячет колонки, которым он не подходит.
+   Две группы (категория и цена) работают вместе, как «И» */
+.catalog-layout:has([name="category"][value="clothes"]:checked) .catalog-item:not([data-category~="clothes"]),
+.catalog-layout:has([name="category"][value="shoes"]:checked) .catalog-item:not([data-category~="shoes"]),
+.catalog-layout:has([name="category"][value="sale"]:checked) .catalog-item:not([data-category~="sale"]),
+.catalog-layout:has([name="category"][value="new"]:checked) .catalog-item:not([data-category~="new"]),
+.catalog-layout:has([name="price"][value="low"]:checked) .catalog-item:not([data-price="low"]),
+.catalog-layout:has([name="price"][value="mid"]:checked) .catalog-item:not([data-price="mid"]),
+.catalog-layout:has([name="price"][value="high"]:checked) .catalog-item:not([data-price="high"]) {
+  display: none;
+}
+
+/* ---------- 15. Страница товара, таблицы (Bootstrap table) ---------- */
+
+.product-title {
+  margin: 0 0 0.67em;
+}
+
+.product-price {
+  margin: 1.5rem 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.product-table {
+  margin-bottom: 0;
+}
+
+.product-table caption {
+  padding: 0 0 0.5rem;
+  font-weight: 700;
+  color: var(--bs-body-color);
+}
+
+.product-table > :not(caption) > * > * {
+  padding: 0.5rem 1rem;
+}
+
+.product-table > thead > tr > th,
+.product-table > tbody > tr > th {
+  background-color: var(--bs-secondary-bg);
+}
+
+.product-table > tbody > tr:nth-child(even) > td {
+  background-color: var(--bs-secondary-bg);
+}
+
+/* Колонка товара, на странице которого находится таблица сравнения */
+.product-table > thead > tr > th.compare-current,
+.product-table > tbody > tr > td.compare-current {
+  background-color: var(--bs-tertiary-bg);
+  font-weight: 600;
+}
+
+/* ---------- 16. Accordion: таблица размеров и вопросы-ответы ---------- */
+
+.accordion {
+  --bs-accordion-bg: var(--bs-secondary-bg);
+  --bs-accordion-color: var(--bs-body-color);
+  --bs-accordion-border-color: var(--bs-border-color);
+  --bs-accordion-btn-color: var(--bs-body-color);
+  --bs-accordion-btn-bg: var(--bs-secondary-bg);
+  --bs-accordion-btn-padding-x: 1rem;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-active-color: var(--bs-body-color);
+  --bs-accordion-active-bg: var(--bs-secondary-bg);
+  --bs-accordion-body-padding-x: 1rem;
+  --bs-accordion-body-padding-y: 0;
+  --bs-accordion-btn-focus-box-shadow: none;
+}
+
+.accordion-button {
+  font-weight: 600;
+}
+
+.accordion-button:not(.collapsed) {
+  box-shadow: none;
+}
+
+.accordion-button:hover {
+  color: var(--bs-primary);
+}
+
+.accordion-button:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: -2px;
+}
+
+.accordion-body {
+  padding-bottom: 1rem;
+}
+
+/* Вопросы-ответы: отдельные блоки с промежутком, открытый выделен рамкой */
+.faq .accordion-item,
+.faq .accordion-item:not(:first-of-type) {
+  margin-bottom: 0.5rem;
+  border-top: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
+}
+
+.faq .accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq .accordion-item:has(.accordion-collapse.show) {
+  border-color: var(--bs-primary);
+}
+
+/* ---------- 17. Форма заказа и страница размеров ---------- */
+
+.form-page {
+  max-width: 560px;
+}
+
+.form-label {
+  margin-bottom: 0.25rem;
+}
+
+/* Переключатель «Свяжитесь со мной»: подпись меняется, при включении появляется поле даты */
+.callback-field {
+  min-height: 36px;
+}
+
+.callback-on,
+.callback-date {
+  display: none;
+}
+
+.callback-field:has(#callback:checked) .callback-off {
+  display: none;
+}
+
+.callback-field:has(#callback:checked) .callback-on {
+  display: inline;
+}
+
+.callback-field:has(#callback:checked) .callback-date {
+  display: flex;
+}
+
+.size-steps {
+  margin: 0 0 2rem;
+  padding-left: 1.5rem;
+  line-height: 1.7;
 }

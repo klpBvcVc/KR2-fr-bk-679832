@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Контактная информация учебного интернет-магазина.">
+  <title>Контакты - Учебный интернет-магазин</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/main.js"></script>
+</head>
+<body id="top" class="d-flex flex-column min-vh-100">
+
+  <!-- Шапка: navbar разворачивается в строку с lg, ниже lg сворачивается в бургер -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-0" aria-label="Основная навигация">
+      <div class="container py-3">
+        <a class="navbar-brand" href="index.html">ShopProject</a>
+
+        <div class="d-flex align-items-center gap-2 ms-auto ms-lg-0 order-lg-last">
+          <button class="theme-toggle" type="button" aria-label="Переключить тему оформления" aria-pressed="false" title="Тема: светлая или тёмная">
+            <span class="theme-toggle__icon" aria-hidden="true"></span>
+          </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse me-lg-3" id="mainNav">
+          <ul class="navbar-nav ms-auto gap-lg-3 py-2 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="contacts.html">Контакты</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#popular">Популярное</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#advantages">Преимущества</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container flex-grow-1">
+    <nav aria-label="Хлебные крошки">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Контакты</li>
+      </ol>
+    </nav>
+
+    <section class="section">
+      <h1 class="section-title">Контакты</h1>
+      <p>
+        Здесь размещается контактная информация учебного интернет-магазина.
+      </p>
+
+      <ul>
+        <li>Телефон: +7 (900) 000-00-00</li>
+        <li>E-mail: info@example.com</li>
+        <li>Адрес: г. Москва, учебный проект</li>
+      </ul>
+    </section>
+
+    <section class="section" id="feedback">
+      <h2 class="section-title">Обратная связь</h2>
+      <p>
+        Нужна помощь с выбором или хотите заказать по телефону? Оставьте быстрый заказ, и мы перезвоним.
+      </p>
+      <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Без выбора товара">Оформить заказ</button>
+    </section>
+
+    <section class="section" id="faq">
+      <h2 class="section-title">Доставка и оплата</h2>
+      <div class="accordion faq">
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1" aria-expanded="false" aria-controls="faq-1">Сколько стоит доставка?</button>
+            </h3>
+            <div id="faq-1" class="accordion-collapse collapse">
+              <div class="accordion-body text-body-secondary">Доставка бесплатная при заказе от 5 000 руб. Для заказов дешевле стоимость доставки по Москве составляет 350 руб.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2" aria-expanded="false" aria-controls="faq-2">В какие сроки приедет заказ?</button>
+            </h3>
+            <div id="faq-2" class="accordion-collapse collapse">
+              <div class="accordion-body text-body-secondary">По Москве от 1 до 3 дней, в другие города от 3 до 7 дней. Точную дату менеджер называет по телефону при подтверждении заказа.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3" aria-expanded="false" aria-controls="faq-3">Как можно оплатить заказ?</button>
+            </h3>
+            <div id="faq-3" class="accordion-collapse collapse">
+              <div class="accordion-body text-body-secondary">Картой или наличными при получении. Онлайн-оплата на сайте в этой версии магазина не подключена.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-4" aria-expanded="false" aria-controls="faq-4">Можно ли вернуть товар?</button>
+            </h3>
+            <div id="faq-4" class="accordion-collapse collapse">
+              <div class="accordion-body text-body-secondary">Да, в течение 14 дней, если сохранены товарный вид, бирки и упаковка. Обувь и одежду можно примерить при получении.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-5" aria-expanded="false" aria-controls="faq-5">Как выбрать размер?</button>
+            </h3>
+            <div id="faq-5" class="accordion-collapse collapse">
+              <div class="accordion-body text-body-secondary">Мерки и таблицы по каждой группе товаров собраны на странице <a href="size.html">«Как выбрать размер»</a>. Если вы между двумя размерами, берите больший для свободного кроя.</div>
+            </div>
+          </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer bg-body-secondary border-top py-4">
+    <div class="container d-flex flex-wrap justify-content-between align-items-start gap-4">
+      <div>
+        <p class="small text-body-secondary mb-1">&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p class="small text-body-secondary mb-1">Изображения: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+      </div>
+      <nav aria-label="Навигация в подвале">
+        <ul class="list-unstyled d-flex gap-3 m-0">
+          <li><a class="active" href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Быстрый заказ: Bootstrap modal, открывается кнопками «Заказать» -->
+  <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-2">
+        <div class="modal-header border-0 pb-0">
+          <h2 class="modal-title" id="orderModalTitle">Быстрый заказ</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-body-secondary">Мы свяжемся с вами для уточнения деталей и адреса доставки.</p>
+
+          <form id="orderForm" action="#" method="post" novalidate>
+            <input id="selected-product" name="selected-product" type="hidden">
+
+            <div class="mb-3">
+              <label class="form-label" for="order-name">Имя</label>
+              <input class="form-control" id="order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="order-phone">Телефон</label>
+              <input class="form-control" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+              <small class="form-text">Формат: +7 (900) 000-00-00</small>
+            </div>
+
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" id="order-agreement" name="agreement" type="checkbox" role="switch" required>
+              <label class="form-check-label" for="order-agreement">Я согласен на обработку данных</label>
+            </div>
+
+            <button class="btn btn-primary mt-2" type="submit">Заказать</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-success success-message position-fixed bottom-0 start-50 translate-middle-x mb-3" id="successMessage" role="alert" hidden>
+    Заказ отправлен! Мы скоро свяжемся с вами.
+  </div>
+
+  <a class="to-top" href="#top" aria-label="Наверх">&uarr;</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

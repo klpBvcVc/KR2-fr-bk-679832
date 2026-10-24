@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Страница оформления заказа в учебном интернет-магазине: контактные данные и адрес доставки.">
+  <title>Оформление заказа - Учебный интернет-магазин</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/main.js"></script>
+</head>
+<body id="top" class="d-flex flex-column min-vh-100">
+
+  <!-- Шапка: navbar разворачивается в строку с lg, ниже lg сворачивается в бургер -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-0" aria-label="Основная навигация">
+      <div class="container py-3">
+        <a class="navbar-brand" href="index.html">ShopProject</a>
+
+        <div class="d-flex align-items-center gap-2 ms-auto ms-lg-0 order-lg-last">
+          <button class="theme-toggle" type="button" aria-label="Переключить тему оформления" aria-pressed="false" title="Тема: светлая или тёмная">
+            <span class="theme-toggle__icon" aria-hidden="true"></span>
+          </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse me-lg-3" id="mainNav">
+          <ul class="navbar-nav ms-auto gap-lg-3 py-2 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#popular">Популярное</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#advantages">Преимущества</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container flex-grow-1">
+    <nav aria-label="Хлебные крошки">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Оформление заказа</li>
+      </ol>
+    </nav>
+
+    <section class="section">
+      <h1 class="section-title">Оформление заказа</h1>
+
+      <form class="form-page mx-auto border p-4" id="orderForm" action="#" method="post" novalidate>
+        <div class="mb-3">
+          <label class="form-label" for="name">Имя</label>
+          <input class="form-control" type="text" id="name" name="name" placeholder="Введите ваше имя" minlength="2" autocomplete="name" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="email">E-mail</label>
+          <input class="form-control" type="email" id="email" name="email" placeholder="example@mail.ru" autocomplete="email" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="phone">Телефон</label>
+          <input class="form-control" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+          <small class="form-text">Формат: +7 (900) 000-00-00</small>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="product">Товар</label>
+          <select class="form-select" id="product" name="product" required>
+            <option value="">Выберите товар</option>
+            <optgroup label="Одежда">
+              <option value="jeans">Джинсы</option>
+              <option value="jacket">Куртка</option>
+              <option value="hoodie">Толстовка</option>
+              <option value="tshirt">Футболка базовая</option>
+              <option value="plaid-shirt">Рубашка в клетку</option>
+              <option value="sweater">Свитер вязаный</option>
+              <option value="coat">Пальто шерстяное</option>
+              <option value="skirt">Юбка миди в клетку</option>
+              <option value="dress">Платье-рубашка в полоску</option>
+              <option value="puffer">Пуховик</option>
+              <option value="scarf">Шарф в полоску</option>
+            </optgroup>
+            <optgroup label="Обувь">
+              <option value="chelsea-boots">Ботинки челси</option>
+              <option value="lace-boots">Ботинки на шнуровке</option>
+              <option value="rain-boots">Резиновые сапоги</option>
+              <option value="canvas-sneakers">Кеды текстильные</option>
+              <option value="slides">Шлёпанцы с декором</option>
+              <option value="sandals">Сандалии на пробковой подошве</option>
+              <option value="loafers">Лоферы-мокасины кожаные</option>
+              <option value="running">Кроссовки беговые</option>
+              <option value="winter-boots">Ботинки зимние</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="address">Адрес доставки</label>
+          <textarea class="form-control" id="address" name="address" rows="3" placeholder="Город, улица, дом, квартира" autocomplete="street-address" required></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="comment">Комментарий к заказу</label>
+          <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Размер, цвет, пожелания по доставке"></textarea>
+        </div>
+
+        <!-- Переключатель «Свяжитесь со мной»: при включении подпись меняется и появляется поле даты -->
+        <div class="callback-field d-flex align-items-center justify-content-between gap-3 mb-3">
+          <div class="form-check form-switch m-0">
+            <input class="form-check-input" type="checkbox" id="callback" name="callback" role="switch">
+            <label class="form-check-label" for="callback">
+              <span class="callback-off">Свяжитесь со мной</span>
+              <span class="callback-on">Удобная дата звонка</span>
+            </label>
+          </div>
+          <div class="input-group callback-date w-auto">
+            <span class="input-group-text">Дата</span>
+            <input class="form-control" type="date" id="callback-date" name="callback-date" aria-label="Удобная дата звонка">
+          </div>
+        </div>
+
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input" id="agreement" name="agreement" type="checkbox" role="switch" required>
+          <label class="form-check-label" for="agreement">Я согласен на обработку данных</label>
+        </div>
+
+        <button class="btn btn-primary mt-2" type="submit">Оформить заказ</button>
+      </form>
+
+      <div class="alert alert-success success-message mx-auto mt-4" id="successMessage" role="alert" hidden>
+        Ваш заказ оформлен, спасибо!
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer bg-body-secondary border-top py-4">
+    <div class="container d-flex flex-wrap justify-content-between align-items-start gap-4">
+      <div>
+        <p class="small text-body-secondary mb-1">&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p class="small text-body-secondary mb-1">Изображения: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+      </div>
+      <nav aria-label="Навигация в подвале">
+        <ul class="list-unstyled d-flex gap-3 m-0">
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#top" aria-label="Наверх">&uarr;</a>
+
+  <script src="js/order-page.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
